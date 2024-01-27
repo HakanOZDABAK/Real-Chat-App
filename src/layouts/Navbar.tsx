@@ -9,16 +9,22 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { auth, provider } from '../configs/firebaseConfig';
 import { signInWithPopup } from 'firebase/auth';
 import Cookies from "universal-cookie"
+import { useAuthStore } from '../services/useAuthStore';
 
 export default function Navbar() {
   const cookies = new Cookies()
+  const{setIsAuth}=useAuthStore()
   const sigInWithGoogle = async () =>{
 
     try{   
       const result = await signInWithPopup(auth,provider);
 
    console.log(result)
-   cookies.set("auth-token",result.user.refreshToken)}
+   cookies.set("auth-token",result.user.refreshToken)
+   setIsAuth(cookies.get("auth-token"))
+  }
+ 
+
   catch(err){
     console.log(err)
   }
