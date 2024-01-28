@@ -13,8 +13,8 @@ export default function Dashboard() {
   } else {
     return (
       <Routes>
-       <Route path='/' element={Room()}/>
-       <Route path='/chat' element={Chat()}/>
+       <Route path='/' element={<Room/>}/>
+       <Route path='/chat' element={<Chat/>}/>
 
       </Routes>
 
