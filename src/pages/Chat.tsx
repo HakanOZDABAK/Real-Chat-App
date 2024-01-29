@@ -47,6 +47,7 @@ export default function Chat() {
 
     setNewMessage("");
   };
+  const currentUser = auth.currentUser?.displayName;
 
   return (
     <div className="chat-app">
@@ -69,9 +70,21 @@ export default function Chat() {
         </h1>
         <div className="messages">
           {messages.map((message) => {
+            const isCurrentUser = message.user === currentUser;
+            const userStyle = {
+              fontWeight: isCurrentUser ? "bold" : "normal",
+              color: isCurrentUser ? "green" : "blue",
+            };
+
             return (
-              <div className="message" key={message.id}>
-                <span className="user">{message.user}:</span>
+              <div className="message" key={message.id} style={{              textAlign: isCurrentUser ? "right" : "left",
+              margin: "10px",
+              padding: "10px",
+              backgroundColor: isCurrentUser ? "#DCF8C6" : "#E8E8E8",
+              borderRadius: "8px",}}>
+                <span className="user" style={userStyle}>
+                  {message.user}:
+                </span>
                 {message.text}
               </div>
             );
