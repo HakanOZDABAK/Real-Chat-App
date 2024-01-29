@@ -5,9 +5,9 @@ type Auth = {
   isAuth: any;
   setIsAuth:any
 };
-
+const cookies = new Cookies()
 
 export const useAuthStore = create<Auth>((set) => ({
-  isAuth: null,
+  isAuth: cookies.get("auth-token"),
   setIsAuth:(isAuth:any) =>set(()=>({isAuth})) // Başlangıç durumu false olarak ayarlandı
 }));

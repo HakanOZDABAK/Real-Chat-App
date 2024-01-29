@@ -1,11 +1,11 @@
 import {create} from "zustand"
 
 type Room={
-    room:string
-    setRoom:any
+    room:any
+    setRoom: (data: any) => void;
 }
 
 export const useRoomService = create<Room>((set) => ({
-    room:"",
-    setRoom:(room:string) =>(set({room}))
+    room:null,
+    setRoom:(room:any) =>set(()=>({room:room}))
   }))
