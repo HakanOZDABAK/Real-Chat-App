@@ -77,14 +77,22 @@ export default function Chat() {
             };
 
             return (
-              <div className="message" key={message.id} style={{              textAlign: isCurrentUser ? "right" : "left",
-              margin: "10px",
-              padding: "10px",
-              backgroundColor: isCurrentUser ? "#DCF8C6" : "#E8E8E8",
-              borderRadius: "8px",}}>
-                <span className="user" style={userStyle}>
-                  {message.user}:
-                </span>
+              <div
+                className="message"
+                key={message.id}
+                style={{
+                  textAlign: isCurrentUser ? "right" : "left",
+                  margin: "10px",
+                  padding: "10px",
+                  backgroundColor: isCurrentUser ? "#DCF8C6" : "#E8E8E8",
+                  borderRadius: "8px",
+                }}
+              >
+                {isCurrentUser ? "" : (
+                  <span className="user" style={userStyle}>
+                    {message.user}:
+                  </span>
+                )}
                 {message.text}
               </div>
             );
