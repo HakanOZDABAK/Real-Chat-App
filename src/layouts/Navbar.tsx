@@ -1,5 +1,6 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
+import axios from "axios";
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -9,7 +10,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { auth, provider } from '../configs/firebaseConfig';
 import { signInWithPopup } from 'firebase/auth';
 import Cookies from "universal-cookie"
-import { useAuthStore } from '../services/useAuthStore';
+import { useAuthStore } from '../store/useAuthStore';
 
 export default function Navbar() {
   const cookies = new Cookies()
@@ -30,6 +31,19 @@ export default function Navbar() {
   }
     
   }
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const response:any = await axios.get("http://localhost:8081/api/v1/message/hello", {
+        headers: {
+          Accept: "*/*",
+          "Content-Type":"application/json"
+
+        },
+      }).then(()=>console.log(response))
+    };
+  
+    fetchData();
+  })
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">

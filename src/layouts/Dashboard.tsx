@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router';
-import { useAuthStore } from '../services/useAuthStore'
+import { useAuthStore } from '../store/useAuthStore'
 import Room from '../pages/Room';
 import Chat from '../pages/Chat';
 

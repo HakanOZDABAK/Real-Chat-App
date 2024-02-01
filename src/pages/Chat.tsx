@@ -10,7 +10,7 @@ import {
   where,
 } from "firebase/firestore";
 import { db, auth } from "../configs/firebaseConfig";
-import { useRoomService } from "../services/useRoomService";
+import { useRoomService } from "../store/useRoomService";
 
 export default function Chat() {
   const [newMessage, setNewMessage] = useState("");
