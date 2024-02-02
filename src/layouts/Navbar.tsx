@@ -31,19 +31,7 @@ export default function Navbar() {
   }
     
   }
-  React.useEffect(() => {
-    const fetchData = async () => {
-      const response:any = await axios.get("http://localhost:8081/api/v1/message/hello", {
-        headers: {
-          Accept: "*/*",
-          "Content-Type":"application/json"
 
-        },
-      }).then(()=>console.log(response))
-    };
-  
-    fetchData();
-  })
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
